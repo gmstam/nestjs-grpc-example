@@ -5,6 +5,7 @@
 // source: src/proto/hello.proto
 
 /* eslint-disable */
+import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
@@ -20,11 +21,11 @@ export interface HelloResponse {
 export const HELLO_PACKAGE_NAME = "hello";
 
 export interface HelloServiceClient {
-  sayHello(request: Empty): Observable<HelloResponse>;
+  sayHello(request: Empty, metadata?: Metadata): Observable<HelloResponse>;
 }
 
 export interface HelloServiceController {
-  sayHello(request: Empty): Promise<HelloResponse> | Observable<HelloResponse> | HelloResponse;
+  sayHello(request: Empty, metadata?: Metadata): Promise<HelloResponse> | Observable<HelloResponse> | HelloResponse;
 }
 
 export function HelloServiceControllerMethods() {

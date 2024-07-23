@@ -5,6 +5,7 @@ import {
   HelloServiceClient,
 } from './proto/hello';
 import { ClientGrpc } from '@nestjs/microservices';
+import { Metadata } from '@grpc/grpc-js';
 
 @Injectable()
 export class AppService implements OnModuleInit {
@@ -18,6 +19,8 @@ export class AppService implements OnModuleInit {
   }
 
   getHello() {
-    return this.helloService.sayHello({});
+    const metadata = new Metadata();
+    metadata.add('x-api-key', 'lamiachiaveapi');
+    return this.helloService.sayHello({}, metadata);
   }
 }
