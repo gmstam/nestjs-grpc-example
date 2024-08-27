@@ -12,7 +12,7 @@ npm install -g @nestjs/cli pnpm
 
 ```sh
 # Download Dependencies
-pnpm install 
+pnpm install
 
 # Then
 pnpm run build
@@ -29,6 +29,5 @@ pnpm run start:dev
 To verify it is working
 
 ```sh
-grpcurl -plaintext localhost:50051 hello.HelloService/SayHello
+grpcurl -plaintext localhost:50051 grpc.health.v1.Health/Check
 ```
-
